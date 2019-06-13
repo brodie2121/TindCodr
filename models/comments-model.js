@@ -1,11 +1,11 @@
 const db = require('./conn-model');
 
 class Comments {
-    constructor(id, comments_content, comments_project_id, comments_user_id){
+    constructor(id, comments_content, comments_project_id, comments_users_id){
         this.id = id;
         this.comments_content = comments_content;
         this.comments_project_id = comments_project_id;
-        this.comments_user_id = comments_user_id;
+        this.comments_user_id = comments_users_id;
     }
 
     static async getById(id) {
@@ -28,8 +28,8 @@ class Comments {
         }
     }
 
-    static async addComment(comments_content, comments_project_id, comments_user_id) {
-        const query = `insert into comments (comments_content, comments_project_id, comments_user_id) values ('${comments_content}', ${comments_project_id}, ${comments_user_id})`;
+    static async addComment(comments_content, comments_project_id, comments_users_id) {
+        const query = `insert into comments (comments_content, comments_project_id, comments_users_id) values ('${comments_content}', ${comments_project_id}, ${comments_users_id})`;
         try {
             let response = await db.result(query);
             return response;

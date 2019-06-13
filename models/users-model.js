@@ -30,6 +30,15 @@ class User {
         }
     }
 
+    static async getUserById() {
+        try {
+            const userData = await db.one(`select * from users where id=${id}`);
+            return userData;
+        } catch (err) {
+            return err.message
+        }
+    }
+
     async save() {
         try {
             const response = await db.one(

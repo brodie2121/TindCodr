@@ -41,8 +41,8 @@
     <h1>Add a new project comment!</h1>
     <br>
     <form action="/projects/update" method="POST">
-        <input type="hidden" name="project_id" value="${projectDetails.id}">
-        <input type="hidden" name="user_id" value="${user_id}">
+        <input type="hidden" name="comments_project_id" value="${projectDetails.id}">
+        <input type="hidden" name="comments_users_id" value="${user_id}">
         <label>Write Your Review Below:
             <br>
             <textarea rows="10" cols="60" name="content"> </textarea>
