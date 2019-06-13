@@ -60,22 +60,25 @@ exports.logout_get = (req, res) => {
 
 exports.login_page_post = async (req, res) => {
     const { email, password } = req.body,
-        userInstance = new Users(null, null, null, email, password);
+    userInstance = new Users(null, null, null, email, password);
+    try {
         const userData = await userInstance.getUserByEmail();
         const isValid = bcrypt.compareSync(password, userData.users_password);
-        console.log(userData);
         if (!!isValid) {
-        req.session.is_logged_in = true;
-        req.session.first_name = userData.users_first_name;
-        req.session.last_name = userData.users_last_name;
-        req.session.user_id = userData.id;
-        req.session.city = userData.users_city;
-        console.log('CORRECT PW!');
-        res.redirect('/');
-    } else {
-        console.log('WRONG PW!');
-        res.redirect('/users/signup');
-        res.sendStatus(401);
+            req.session.is_logged_in = true;
+            req.session.first_name = userData.users_first_name;
+            req.session.last_name = userData.users_last_name;
+            req.session.user_id = userData.id;
+            req.session.city = userData.users_city;
+            console.log('CORRECT PW!');
+            res.redirect('/');
+        } else {
+            console.log('WRONG PW!');
+            res.redirect('/users/signup');
+            res.sendStatus(401);
+        }
+    } catch(err) {
+        res.redirect('/users/login');
     }
 }
 
@@ -85,7 +88,7 @@ exports.sign_up_post = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt); 
     
-    const userInstance = new User(null, first_name, last_name, email, hash);
+    const userInstance = new Users(null, first_name, last_name, email, hash);
     userInstance.save().then(response => {
         req.session.first_name = response.first_name;
         req.session.last_name = response.last_name;

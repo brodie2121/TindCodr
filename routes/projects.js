@@ -7,6 +7,7 @@ const User = require('../models/users-model');
 const ProjectsController = require('../controllers/projects-controllers');
 
 router.get('/', ProjectsController.allProjects_get);
+router.get('/new', ProjectsController.project_page_get);
 
 router.get('/:id', ProjectsController.ProjectById_get);
 

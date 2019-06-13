@@ -3,6 +3,7 @@ const CommentModels = require('../models/comments-model');
 
 exports.allProjects_get = async (req, res) => {
     const allProjects = await ProjectsModels.getAll();
+    console.log(allProjects)
     res.render('template', {
         locals: {
             title: 'Projects',
@@ -11,6 +12,18 @@ exports.allProjects_get = async (req, res) => {
         },
         partials: {
             partial: 'partial-projects',
+        }
+    });
+}
+
+exports.project_page_get = (req, res) => {
+    res.render('template', {
+        locals: {
+            title: 'New Projects',
+            is_logged_in: req.session.is_logged_in
+        },
+        partials: {
+            partial: 'partial-addprojects'
         }
     });
 }
@@ -34,16 +47,17 @@ exports.ProjectById_get = async (req, res) => {
 }
 
 exports.addProject_post = async (req, res) => {
-    const { project_title, project_start, project_summary, project_url, project_open, project_users_id} = req.body;
-
-    ProjectsModels.add(project_title, project_start, project_summary, project_url, project_open, project_users_id)
+    const { project_title, project_start, project_summary, project_url, project_open } = req.body;
+    //const project_users_id = req.session.user_id
+    ProjectsModels.addProject(project_title, project_start, project_summary, project_url, project_open)
     .then(async () => {
         const allProjects = await ProjectsModels.getAll();
         
         res.status(200).render('template', {
             locals: {
                 title: 'Projects Updated',
-                projectsList: allProjects
+                projectsList: allProjects,
+                is_logged_in: req.session.is_logged_in
             },
             partials: {
                 partial: 'partial-projects',
