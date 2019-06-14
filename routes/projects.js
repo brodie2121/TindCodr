@@ -15,4 +15,7 @@ router.post('/', ProjectsController.addProject_post);
 
 router.post('/update', ProjectsController.addComment_post);
 
+router.get('/myprojects', ProjectsController.ProjectsByUserId_get);
+
+
 module.exports = router;
