@@ -31,11 +31,25 @@ class Projects {
         }
     }
 
+    static async getByUserId(user_id) {
+        try {
+            const response = await db.any(`select * from projects where project_users_id='${user_id}'`);
+            console.log('this is the projects-models page userid: ', user_id)
+            return response;
+        } catch(err) {
+            return err.message
+        }
+    }
 
     static async addProject(project_title, project_start, project_summary, project_url, project_open) {
         const query = `insert into projects
+<<<<<<< HEAD
         (project_title, project_start, project_summary, project_url, project_open)
     Values ('${project_title}', '${project_start}','${project_summary}', '${project_url}', '${project_open}')`;
+=======
+        (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+    Values ('${project_title}', '${project_start}','${project_summary}', '${project_url}', '${project_open}', ${project_users_id})`;
+>>>>>>> upstream/new-staging-area
         try {
             let response = await db.result(query);
             return response;
