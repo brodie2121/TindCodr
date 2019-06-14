@@ -6,12 +6,15 @@ const express = require('express')
     cookieParser = require('cookie-parser'),
     logger = require('morgan');
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const projectsRouter = require('./routes/projects');
 const myProjectsRouter = require('./routes/myprojects');
 
 const app = express();
+
+require('dotenv').config;
 
 app.engine('html', es6Renderer);
 app.set('views', 'views');

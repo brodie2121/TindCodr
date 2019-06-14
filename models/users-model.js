@@ -73,7 +73,7 @@ static async getUserById() {
     }
 }
 
-    async checkIfCreated() {
+    async checkUserProfile  () {
         try {
             const response = await db.one(`SELECT users_email FROM users WHERE users_email =$1`, [this.users_email]);
             return response;
