@@ -3,7 +3,6 @@ const CommentModels = require('../models/comments-model');
 
 exports.allProjects_get = async (req, res) => {
     const allProjects = await ProjectsModels.getAll();
-    console.log(allProjects)
     res.render('template', {
         locals: {
             title: 'Projects',
@@ -12,18 +11,6 @@ exports.allProjects_get = async (req, res) => {
         },
         partials: {
             partial: 'partial-projects',
-        }
-    });
-}
-
-exports.project_page_get = (req, res) => {
-    res.render('template', {
-        locals: {
-            title: 'New Projects',
-            is_logged_in: req.session.is_logged_in
-        },
-        partials: {
-            partial: 'partial-addprojects'
         }
     });
 }
@@ -46,7 +33,7 @@ exports.ProjectById_get = async (req, res) => {
     });
 }
 
-exports.ProjectsByUserId_get = async (req, res) =>{
+exports.ProjectsByUserId_get = async (req, res) => {
     const UserId = req.session.user_id;
     console.log('this is req params: ', req.session.user_id)
     console.log('user id being called is: ', UserId);
@@ -66,36 +53,36 @@ exports.ProjectsByUserId_get = async (req, res) =>{
 }
 
 exports.addProject_post = async (req, res) => {
-    const { project_title, project_start, project_summary, project_url, project_open, project_users_id} = req.body;
+    const { project_title, project_start, project_summary, project_url, project_open, project_users_id } = req.body;
 
     ProjectsModels.addProject(project_title, project_start, project_summary, project_url, project_open, project_users_id)
-    .then(async () => {
-        const allProjects = await ProjectsModels.getAll();
-        
-        res.status(200).render('template', {
-            locals: {
-                title: 'Projects Updated',
-                projectsList: allProjects,
-                is_logged_in: req.session.is_logged_in,
+        .then(async () => {
+            const allProjects = await ProjectsModels.getAll();
 
-            },
-            partials: {
-                partial: 'partial-projects',
-            }
-        });
-    })
+            res.status(200).render('template', {
+                locals: {
+                    title: 'Projects Updated',
+                    projectsList: allProjects,
+                    is_logged_in: req.session.is_logged_in,
+
+                },
+                partials: {
+                    partial: 'partial-projects',
+                }
+            });
+        })
         .catch((err) => {
-        res.sendStatus(500).send(err.message);
-    });
+            res.sendStatus(500).send(err.message);
+        });
 }
 
 exports.addComment_post = async (req, res) => {
-    const {comments_content, comments_project_id, comments_users_id} = req.body;
+    const { comments_content, comments_project_id, comments_users_id } = req.body;
     CommentModels.addComment(comments_content, comments_project_id, comments_users_id)
-    .then(async () => {
-        res.redirect('/');
-    })
-    .catch((err) => {
-        res.sendStatus(500).send(err.message);
-    });
+        .then(async () => {
+            res.redirect('/');
+        })
+        .catch((err) => {
+            res.sendStatus(500).send(err.message);
+        });
 }

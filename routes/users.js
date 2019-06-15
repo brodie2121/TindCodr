@@ -3,7 +3,7 @@ const express = require('express'),
   UsersControllers = require('../controllers/users-controllers');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('template', {
     locals: {
       title: 'User Page',

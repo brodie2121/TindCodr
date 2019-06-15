@@ -1,5 +1,5 @@
 const express = require('express')
-    session = require('express-session'),
+session = require('express-session'),
     FileStore = require('session-file-store')(session),
     es6Renderer = require('express-es6-template-engine'),
     path = require('path'),
@@ -10,6 +10,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const projectsRouter = require('./routes/projects');
 const myProjectsRouter = require('./routes/myprojects');
+const myProfileRouter = require('./routes/myprofile');
+const matchMakerRouter = require('./routes/matchmaker');
 
 const app = express();
 
@@ -34,5 +36,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/myprojects', myProjectsRouter);
+app.use('/myprofile', myProfileRouter);
+app.use('/matchmaker', matchMakerRouter);
 
 module.exports = app;

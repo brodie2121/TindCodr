@@ -1,7 +1,7 @@
 const db = require('./conn-model');
 
 class Comments {
-    constructor(id, comments_content, comments_project_id, comments_user_id){
+    constructor(id, comments_content, comments_project_id, comments_user_id) {
         this.id = id;
         this.comments_content = comments_content;
         this.comments_project_id = comments_project_id;
@@ -13,7 +13,7 @@ class Comments {
             const response = await db.any(`select * from comments where comments_project_id=${id}`);
             console.log(response);
             return response;
-        } catch(err) {
+        } catch (err) {
             return err.message
         }
     }
@@ -23,7 +23,7 @@ class Comments {
             const response = await db.any(`select * from comments`);
             console.log(response);
             return response;
-        } catch(err) {
+        } catch (err) {
             return err.message
         }
     }
@@ -35,7 +35,7 @@ class Comments {
         try {
             let response = await db.result(query);
             return response;
-        } catch(err) {
+        } catch (err) {
             console.log('Error', err.message);
             return err;
         }
