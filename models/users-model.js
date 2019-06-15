@@ -73,10 +73,11 @@ static async getUserById() {
     }
 }
 
-    async checkUserProfile  () {
+    async checkUserProfile (slack) {
         try {
-            const response = await db.one(`SELECT users_email FROM users WHERE users_email =$1`, [this.users_email]);
-            return response;
+            const response = await db.one(`select * from users where users.users_email = $1`, [this.email]);
+            const { user_id, first_name, last_name, users_email, team_id } = response;
+            return { user_id, first_name, last_name, users_email, team_id };
         } catch(err) {
             return err.message
         }

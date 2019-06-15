@@ -52,7 +52,7 @@ exports.ProjectsByUserId_get = async (req, res) => {
 }
 
 exports.addProject_post = async (req, res) => {
-    const { project_title, project_start, project_summary, project_url, project_open, project_users_id} = req.body;
+    const { project_title, project_start, project_summary, project_url, project_open, project_users_id } = req.body;
 
     ProjectsModels.addProject(project_title, project_start, project_summary, project_url, project_open, project_users_id)
     .then(async () => {
