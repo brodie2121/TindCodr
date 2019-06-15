@@ -33,11 +33,11 @@ exports.ProjectById_get = async (req, res) => {
     });
 }
 
-exports.ProjectsByUserId_get = async (req, res) => {
+exports.ProjectsByUserId_get = async (req, res) =>{
     const UserId = req.session.user_id;
-    console.log('this is the req params:', req.session.user_id)
-    console.log('user id being called is:', UserId);
-    const myProjects = await ProjectsModels.getUserById(UserId);
+    console.log('this is req params: ', req.session.user_id)
+    console.log('user id being called is: ', UserId);
+    const myProjects = await ProjectsModels.getByUserId(UserId);
     res.render('template', {
         locals: {
             title: 'My Projects',
@@ -61,7 +61,9 @@ exports.addProject_post = async (req, res) => {
         res.status(200).render('template', {
             locals: {
                 title: 'Projects Updated',
-                projectsList: allProjects,is_logged_in: req.session.is_logged_in,
+                projectsList: allProjects,
+                is_logged_in: req.session.is_logged_in,
+
             },
             partials: {
                 partial: 'partial-projects',
@@ -74,8 +76,8 @@ exports.addProject_post = async (req, res) => {
 }
 
 exports.addComment_post = async (req, res) => {
-    const {comments_content, comments_users_id, comments_project_id} = req.body;
-    CommentModels.addComment(comments_content, comments_users_id, comments_project_id)
+    const {comments_content, comments_project_id, comments_users_id} = req.body;
+    CommentModels.addComment(comments_content, comments_project_id, comments_users_id)
     .then(async () => {
         res.redirect('/');
     })
