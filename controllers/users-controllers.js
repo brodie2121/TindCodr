@@ -87,12 +87,14 @@ exports.logout_get = (req, res) => {
 ////////////////
 
 exports.login_page_post = async (req, res) => {
+    console.log('deeznuts');
+
     const { email, password } = req.body,
         userInstance = new User(null, null, null, email, password, null, null);
-    const userData = await userInstance.getUserByEmail();
-    const isValid = bcrypt.compareSync(password, userData.users_password);
-    console.log(userData);
-    if (!!isValid) {
+        const userData = await userInstance.getUserByEmail();
+        const isValid = bcrypt.compareSync(password, userData.users_password);
+        console.log(userData);
+        if (!!isValid) {
         req.session.is_logged_in = true;
         req.session.first_name = userData.users_first_name;
         req.session.last_name = userData.users_last_name;
