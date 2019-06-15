@@ -10,6 +10,9 @@ create table users (
   picture_path varchar(500)
 );
 
+ALTER TABLE users
+Add COLUMN users_about_me VARCHAR (1000);
+
 create table projects (
   id serial primary key,
   project_title varchar(100),
@@ -26,3 +29,15 @@ create table comments (
   comments_users_id integer references users(id),
   comments_project_id integer references projects(id)
   );
+
+create table likes (
+  id serial primary key,
+  liker_users_id integer references users(id),
+  liked_users_id integer (10)
+);
+
+create table dislikes (
+  id serial primary key,
+  disliker_users_id integer references users(id),
+  disliked_users_id integer (10)
+;)

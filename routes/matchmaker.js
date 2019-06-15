@@ -1,20 +1,14 @@
 const express = require('express'), 
     router = express.Router();
+
 const ProjectsModels = require('../models/projects-model');
 const CommentsModels = require('../models/comments-model');
 const User = require('../models/users-model');
 
 const ProjectsController = require('../controllers/projects-controllers');
+const UsersController = require('../controllers/users-controllers');
 
-router.get('/', ProjectsController.allProjects_get);
 
-router.get('/:id', ProjectsController.ProjectById_get);
-
-router.post('/', ProjectsController.addProject_post);
-
-router.post('/update', ProjectsController.addComment_post);
-
-router.get('/myprojects', ProjectsController.ProjectsByUserId_get);
-
+router.get('/', UsersController.matchmaker_page_get);
 
 module.exports = router;
