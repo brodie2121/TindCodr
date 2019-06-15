@@ -60,12 +60,7 @@ exports.logout_get = (req, res) => {
 
 exports.login_page_post = async (req, res) => {
     const { email, password } = req.body,
-<<<<<<< HEAD
-    userInstance = new Users(null, null, null, email, password);
-    try {
-=======
         userInstance = new User(null, null, null, email, password);
->>>>>>> upstream/new-staging-area
         const userData = await userInstance.getUserByEmail();
         const isValid = bcrypt.compareSync(password, userData.users_password);
         if (!!isValid) {
@@ -81,10 +76,10 @@ exports.login_page_post = async (req, res) => {
             res.redirect('/users/signup');
             res.sendStatus(401);
         }
-    } catch(err) {
+    }     catch(err) {
         res.redirect('/users/login');
     }
-}
+
 
 exports.sign_up_post = (req, res) => {
     const { first_name, last_name, email, password } = req.body;

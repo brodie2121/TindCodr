@@ -66,15 +66,9 @@ exports.ProjectsByUserId_get = async (req, res) =>{
 }
 
 exports.addProject_post = async (req, res) => {
-<<<<<<< HEAD
-    const { project_title, project_start, project_summary, project_url, project_open } = req.body;
-    //const project_users_id = req.session.user_id
-    ProjectsModels.addProject(project_title, project_start, project_summary, project_url, project_open)
-=======
     const { project_title, project_start, project_summary, project_url, project_open, project_users_id} = req.body;
 
     ProjectsModels.addProject(project_title, project_start, project_summary, project_url, project_open, project_users_id)
->>>>>>> upstream/new-staging-area
     .then(async () => {
         const allProjects = await ProjectsModels.getAll();
         
@@ -82,12 +76,8 @@ exports.addProject_post = async (req, res) => {
             locals: {
                 title: 'Projects Updated',
                 projectsList: allProjects,
-<<<<<<< HEAD
-                is_logged_in: req.session.is_logged_in
-=======
                 is_logged_in: req.session.is_logged_in,
 
->>>>>>> upstream/new-staging-area
             },
             partials: {
                 partial: 'partial-projects',

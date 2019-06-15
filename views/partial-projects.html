@@ -22,57 +22,28 @@
 </section>
 <section class="section">
     ${!!is_logged_in ? `
-<<<<<<< HEAD
     <p>Add a new project!</p>
-    <form action="/racetracks" method="POST">
-        <label>Title
-            <input type="text" name="title">
+    <form action="/projects" method="POST">
+        <label>Project Title
+            <input type="text" name="project_title">
         </label>
-        <label>Start
-            <input type="text" name="start">
+        <label>Project Start
+            <input type="text" name="project_start">
         </label>
-        <label>Summary
-            <input type="text" name="summary">
+        <label>Project Summary
+            <input type="text" name="project_summary">
         </label>
-        <label>Url
-            <input type="text" name="url">
+        <label>Project URL
+            <input type="text" name="project_url">
         </label>
-        <label>Open
-            <input type="text" name="open">
+        <label>Project Open
+            <input type="text" name="project_open">
         </label>
-        <label>Users_id
-            <input type="text" name="users_id">
+        <label>Project User's ID
+            <input type="text" name="project_users_id">
         </label>
         <button type="submit" class='is-primary'>Submit</button>
     </form>
     ` : `
-    <p><a href="/users/login">Login </a> to add a new project listing!</p> `}
-
-    <a href="/projects/new">Upload your projects</a>
-=======
-<p>Add a new project!</p>
-<form action="/projects" method="POST">
-    <label>Project Title
-        <input type="text" name="project_title">
-    </label>
-    <label>Project Start
-        <input type="text" name="project_start">
-    </label>
-    <label>Project Summary
-        <input type="text" name="project_summary">
-    </label>
-    <label>Project URL
-        <input type="text" name="project_url">
-    </label>
-    <label>Project Open
-        <input type="text" name="project_open">
-    </label>
-    <label>Project User's ID
-        <input type="text" name="project_users_id">
-    </label>
-    <button type="submit" class='is-primary'>Submit</button>
-</form>
-` : ` 
-<p> Login to add a new project listing!</p> `}
->>>>>>> upstream/new-staging-area
+    <p> Login to add a new project listing!</p> `}
 </section>

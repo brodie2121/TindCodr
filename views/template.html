@@ -16,10 +16,8 @@
             <a class="navbar-item" href='/'>Home</a>
             <a class="navbar-item" href='/projects'>Latest Projects</a>
             ${!!is_logged_in ? `
-                <a class="navbar-item" href='/myprojects'>My Projects</a>
+            <a class="navbar-item" href='/myprojects'>My Projects</a>
         </div>
-<<<<<<< HEAD
-        ${!!is_logged_in ? `
         <div class="navbar-end">
             <a class="navbar-item" href="/users/logout"> Logout </a>
         </div>
@@ -29,17 +27,6 @@
             <a class="navbar-item" href="/users/signup"> Signup</a>
         </div>
         `}
-=======
-            <div class ="navbar-end">
-                <a class="navbar-item" href="/users/logout"> Logout </a> 
-            </div>
-            ` : `
-            <div class ="navbar-end">
-                <a class="navbar-item" href="/users/login"> Login </a> 
-                <a class="navbar-item" href="/users/signup"> Signup</a>
-            </div>
-            `}
->>>>>>> upstream/new-staging-area
     </nav>
     <h1>${title}</h1>
     <main class="container">${partial}</main>
