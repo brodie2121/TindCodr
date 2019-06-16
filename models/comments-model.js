@@ -10,8 +10,7 @@ class Comments {
 
     static async getById(id) {
         try {
-            const response = await db.any(`select * from comments where comments_project_id=${id}`);
-            console.log(response);
+            const response = await db.any(`select * from comments LEFT JOIN users ON comments.comments_users_id=users.id where comments_project_id=${id}`);
             return response;
         } catch (err) {
             return err.message
@@ -21,7 +20,6 @@ class Comments {
     static async getAll() {
         try {
             const response = await db.any(`select * from comments`);
-            console.log(response);
             return response;
         } catch (err) {
             return err.message
@@ -30,8 +28,6 @@ class Comments {
 
     static async addComment(comments_content, comments_project_id, comments_users_id) {
         const query = `insert into comments (comments_content, comments_users_id, comments_project_id) values ('${comments_content}', ${comments_users_id}, ${comments_project_id})`;
-        console.log('project id is: ', comments_project_id);
-        console.log('user id is: ', comments_users_id);
         try {
             let response = await db.result(query);
             return response;

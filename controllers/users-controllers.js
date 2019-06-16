@@ -8,6 +8,9 @@ User = require('../models/users-model'),
 ///////
 
 exports.user_page_get = async (req, res) => {
+  if (!req.session.is_logged_in) {
+    return res.redirect("/")
+  }
     const userInstance = new User(req.session.user_id, null, null, null, null, null),
         getUserInfo = await userInstance.getUserInfo();
     //getAllUserComments = await userInstance.getOneUserComments();
@@ -53,6 +56,9 @@ exports.matchmaker_page_get = async (req, res) => {
 }
 
 exports.login_page_get = (req, res) => {
+  if (req.session.is_logged_in) {
+    return res.redirect("/myprofile")
+  }
     res.render('template', {
         locals: {
             title: 'Login Page',
@@ -65,6 +71,9 @@ exports.login_page_get = (req, res) => {
 }
 
 exports.sign_up_get = (req, res) => {
+  if (req.session.is_logged_in) {
+    return res.redirect("/myprofile")
+  }
     res.render('template', {
         locals: {
             title: 'Sign Up Page',
@@ -93,7 +102,6 @@ exports.login_page_post = async (req, res) => {
     userInstance = new User(null, null, null, email, password, null, null);
     const userData = await userInstance.getUserByEmail();
     const isValid = bcrypt.compareSync(password, userData.users_password);
-    console.log(userData);
     if (!!isValid) {
         req.session.is_logged_in = true;
         req.session.first_name = userData.users_first_name;
@@ -102,7 +110,17 @@ exports.login_page_post = async (req, res) => {
         req.session.city = userData.users_city;
         req.session.about_me = userData.users_about_me;
         console.log('CORRECT PW!');
-        res.redirect('/');
+        res.render('template', { 
+          locals: {
+            title: 'TindCodr', 
+            is_logged_in: req.session.is_logged_in
+
+          },
+          partials: {
+            partial: 'partial-index'
+          }
+       });
+
     } else {
         console.log('WRONG PW!');
         res.redirect('/users/signup');
@@ -117,12 +135,12 @@ exports.sign_up_post = (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
 
     const userInstance = new User(null, first_name, last_name, email, hash, city, about_me);
-    userInstance.save().then(response => {
+  userInstance.save().then(response => {
         req.session.first_name = response.first_name;
         req.session.last_name = response.last_name;
         req.session.user_id = response.id;
         req.session.city = response.users_city;
         req.session.about_me = response.about_me;
-        res.redirect('/');
+        res.redirect('/users/login');
     });
 }

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="Path_4" x="174.259" y="-311.264" width="2553.831" height="1058.573" filterUnits="userSpaceOnUse">
+      <feOffset dy="40" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feFlood flood-color="#c5c3f9" flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_1" x="127.352" y="-344" width="2505.648" height="894.045" filterUnits="userSpaceOnUse">
+      <feOffset dy="40" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="20" result="blur-2"/>
+      <feFlood flood-color="#c5c3f9" flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_2" x="-613.27" y="565.053" width="1601.244" height="1201.107" filterUnits="userSpaceOnUse">
+      <feOffset dy="40" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="20" result="blur-3"/>
+      <feFlood flood-color="#c5c3f9" flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_3" x="-823.166" y="64.224" width="1599.038" height="1316.766" filterUnits="userSpaceOnUse">
+      <feOffset dy="40" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="20" result="blur-4"/>
+      <feFlood flood-color="#c5c3f9" flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Web_1920_3">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_3" data-name="Web 1920 – 3" clip-path="url(#clip-Web_1920_3)">
+    <rect width="1920" height="1080" fill="#fff"/>
+    <g id="Rectangle_1" data-name="Rectangle 1" fill="#fff" stroke="#707070" stroke-width="1">
+      <rect width="1920" height="1080" stroke="none"/>
+      <rect x="0.5" y="0.5" width="1919" height="1079" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_4)">
+      <path id="Path_4-2" data-name="Path 4" d="M6884.685-271.894c266.2,71.159,423.4,19.785,707.161,106.5s263.964,198.808,648.078,300.038S9015.6-54.891,9015.6-54.891V-618H6630.028S6618.48-343.053,6884.685-271.894Z" transform="translate(-6368.66 -137.25) rotate(4)" fill="rgba(86,191,246,0.64)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_1)">
+      <path id="Path_1-2" data-name="Path 1" d="M6884.685-271.894c266.2,71.159,423.4,19.785,707.161,106.5s263.964,198.808,648.078,300.038S9015.6-54.891,9015.6-54.891V-618H6630.028S6618.48-343.053,6884.685-271.894Z" transform="translate(-6442.6 294)" fill="#56bff6"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_2)">
+      <path id="Path_2-2" data-name="Path 2" d="M6773.7-339.834c150.221,57.19,238.926,15.9,399.054,85.594S7321.711-94.458,7538.466-13.1s437.718-152.329,437.718-152.329V-618H6630S6623.481-397.025,6773.7-339.834Z" transform="translate(7073.63 3576.79) rotate(-158)" fill="#56bff6"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_3)">
+      <path id="Path_3-2" data-name="Path 3" d="M6773.7-339.834c150.221,57.19,238.926,15.9,399.054,85.594S7321.711-94.458,7538.466-13.1s437.718-152.329,437.718-152.329V-618H6630S6623.481-397.025,6773.7-339.834Z" transform="translate(6512.57 3954.74) rotate(-151)" fill="rgba(86,191,246,0.33)"/>
+    </g>
+  </g>
+</svg>

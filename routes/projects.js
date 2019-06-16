@@ -8,6 +8,8 @@ const ProjectsController = require('../controllers/projects-controllers');
 
 router.get('/', ProjectsController.allProjects_get);
 
+router.get('/new', ProjectsController.newProjects_get)
+
 router.get('/:id', ProjectsController.ProjectById_get);
 
 router.post('/', ProjectsController.addProject_post);
@@ -15,6 +17,7 @@ router.post('/', ProjectsController.addProject_post);
 router.post('/update', ProjectsController.addComment_post);
 
 router.get('/myprojects', ProjectsController.ProjectsByUserId_get);
+
 
 
 module.exports = router;

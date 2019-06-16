@@ -4,14 +4,15 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <!-- Place favicon.ico in the root directory -->
 </head>
 
 <body>
-    <nav class="navbar main-nav is-dark" role="navigation" aria-label="main navigation">
+    <nav class="navbar main-nav" role="navigation" aria-label="main navigation">
         ${!!is_logged_in ? `
-        <div class="navbar-start">
+        <div class="container navbar-start">
             <a class="navbar-item" href='/'>Home</a>
             <a class="navbar-item" href='/projects'>Latest Projects</a>
             <a class="navbar-item" href='/myprojects'>My Projects</a>
@@ -23,7 +24,7 @@
             <a class="navbar-item" href="/users/logout"> Logout </a>
         </div>
         ` : `
-        <div class="navbar-start">
+        <div class="navbar-start container">
             <a class="navbar-item" href='/'>Home</a>
             <a class="navbar-item" href='/projects'>Latest Projects</a>
             <div class="navbar-end">
@@ -32,8 +33,10 @@
             </div>
             `}
     </nav>
-    <h1>${title}</h1>
-    <main class="container">${partial}</main>
+      <main>
+        ${partial}
+      </main>
+   
 </body>
 
 </html>
