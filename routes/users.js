@@ -16,19 +16,19 @@ router.get('/authorize/slack', async function(req, res) {
 
     if(team_id == process.env['TEAM_ID']) {
       console.log('if')
-      req.session.email = data.email;
+      req.session.email = data.user.email;
       req.session.bearer = data.access_token;
       req.session.is_logged_in = true;
-      req.session.status = data.ok;
 
-    const user = new User(null, null, null, req.session.email);
-    userProfileCheck = await user.checkUserProfile();
-    console.log(userProfileCheck)
-    if(userProfileCheck.users_email == true) {
-      res.redirect('/users/signup');
-    } else {
-        res.redirect('/')
-    }   
+      const user = new User(null, null, null, data.user.email, null, null, null);
+    
+      userProfileCheck = await user.checkUserProfile();
+      console.log('user profile check ', userProfileCheck)
+      if(!userProfileCheck.users_email) {
+        res.redirect('/users/signup');
+      } else {
+          res.redirect('/projects');
+      }   
     }
   })
 });

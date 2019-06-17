@@ -74,11 +74,15 @@ static async getUserById() {
     }
 }
 
-    async checkUserProfile (slack) {
+    async checkUserProfile() {
+        console.log('users email', this.users_email);
+        console.log("the user ", this);
         try {
-            const response = await db.one(`select * from users where users.users_email = $1`, [this.email]);
-            const { user_id, first_name, last_name, users_email, team_id } = response;
-            return { user_id, first_name, last_name, users_email, team_id };
+            const userData = await db.one(`select * from users where users_email = $1;`, [this.users_email]);
+            console.log('userData ', userData);
+            return userData;
+            // const { user_id, first_name, last_name, users_email, team_id } = response;
+            // return { user_id, first_name, last_name, users_email, team_id };
         } catch(err) {
             return err.message
         }

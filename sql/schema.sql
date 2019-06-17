@@ -6,7 +6,7 @@ create table users (
   users_password varchar(500),
   users_city varchar(100),
   coding_level varchar(200),
-  about_me varchar(1000), 
+  users_about_me varchar(1000), 
   picture_path varchar(500)
 );
 
@@ -40,4 +40,4 @@ create table dislikes (
   id serial primary key,
   disliker_users_id integer references users(id),
   disliked_users_id integer (10)
-;)
+);
