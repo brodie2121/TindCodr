@@ -1,28 +1,27 @@
 <div class="project-container">
-  <section class="section">
-    <h1 class="login-text"> Here are your Latest Projects</h1>
-      <table class="table">
-          <thead>
-              <tr>
-                  <th> Title </td>
-                  <th> Project Start </th>
-                  <th> Project Summary </th>
-                  <th> Project Url </th>
-                  <th> Project Open</th>
-              </tr>
-          </thead>
-          ${myListOfProjects.map(projects =>
-          `<tr>
-              <td><a href="/projects/${projects.id}">${projects.project_title}</a></td>
-              <td>${projects.project_start}</td>
-              <td>${projects.project_summary}</td>
-              <td>${projects.project_url}</td>
-              <td>${projects.project_open}</td>
-          </tr>`
-          ).join('')}
-      </table>
-      <a href="/projects/new">Add a new Project </a>
-  </section>
+    <section class="section">
+        <h1 class="login-text"> Here are your Latest Projects</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Title </td>
+                    <th> Project Start </th>
+                    <th> Project Summary </th>
+                    <th> Project Url </th>
+                    <th> Project Open</th>
+                </tr>
+            </thead>
+            ${myListOfProjects.map(projects =>
+            `<tr>
+                <td><a href="/projects/${projects.id}">${projects.project_title}</a></td>
+                <td>${projects.project_start}</td>
+                <td>${projects.project_summary}</td>
+                <td>${projects.project_url}</td>
+                <td>${projects.project_open}</td>
+            </tr>`
+            ).join('')}
+        </table>
+        <a href="/projects/new">Add a new Project </a>
+    </section>
 
 </div>
-
