@@ -9,24 +9,24 @@ class Projects {
         this.project_url = project_url;
         this.project_open = project_open;
         this.project_users_id = project_users_id;
-        }
+    }
 
 
     static async getAll() {
         try {
-            const response = await db.any(`select * from projects`);
+            const response = await db.any(`select * from projects LEFT JOIN users ON projects.project_users_id = users.id`);
             return response;
-        } catch(err) {
+        } catch (err) {
             return err.message
         }
     }
-    
+
 
     static async getById(id) {
         try {
-            const response = await db.one(`select * from projects where id=${id}`);
+            const response = await db.any(`select * from projects LEFT JOIN users ON projects.project_users_id=users.id where projects.id=${id}`);
             return response;
-        } catch(err) {
+        } catch (err) {
             return err.message
         }
     }
@@ -36,7 +36,7 @@ class Projects {
             const response = await db.any(`select * from projects where project_users_id='${user_id}'`);
             console.log('this is the projects-models page userid: ', user_id)
             return response;
-        } catch(err) {
+        } catch (err) {
             return err.message
         }
     }
@@ -48,8 +48,8 @@ class Projects {
         try {
             let response = await db.result(query);
             return response;
-        } catch(err) {
-            console.log ('Error', err.message);
+        } catch (err) {
+            console.log('Error', err.message);
             return err;
         }
     }
@@ -58,4 +58,3 @@ class Projects {
 
 
 module.exports = Projects;
-

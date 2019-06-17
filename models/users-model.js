@@ -23,8 +23,8 @@ class User {
             const userData = await db.one(`
             select id, users_first_name, users_last_name, users_password, users_city, users_about_me
                 from users
-            where users_email = $1`, 
-            [this.users_email]);
+            where users_email = $1`,
+                [this.users_email]);
             return userData;
         } catch (err) {
             return err.message;
@@ -60,7 +60,7 @@ class User {
         try {
             let response = await db.any(`select * from users`);
             return response;
-        } catch(err) {
+        } catch (err) {
             return err.message
         }
     }

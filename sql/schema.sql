@@ -40,4 +40,8 @@ create table dislikes (
   id serial primary key,
   disliker_users_id integer references users(id),
   disliked_users_id integer (10)
+<<<<<<< HEAD
 );
+=======
+;)
+>>>>>>> ecedb906dc4246d36085ab71fed7989fda97a5ce

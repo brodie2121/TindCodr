@@ -1,41 +1,45 @@
-<form action="/users/signup" method="POST">
-    <label>
-        First Name
-        <input type="text" name="first_name" placeholder="Bill" />
-    </label>
-    <label>
-        Last Name
-        <input type="text" name="last_name" placeholder="Shakespeare" />
-    </label>
-    <label>
-        Your City
-        <input type="text" name="city" placeholder="Atlanta" />
-    </label>
-    <label>
-        Write Something About Yourself
-        <input type="text" name="about_me" placeholder="About you" />
-    </label>
-    <label>
-        Email Address
-        <input type="text" name="email" placeholder="you@read.com" />
-    </label>
-    <label>
-        Password
-        <input type="password" name="password" placeholder="Your Password" />
-        <label>
-            Coding Level
-            <input type="text" name="coding_level" placeholder="your level" />
-        </label>
-        <label>
-            About Me
-            <input type="text" name="about_me" placeholder="about me" />
-        </label>
-        <label>
-            Profile Picture
-            <input type="text" name="picture_url" placeholder="profile picture" />
-        </label>
-    <button type="submit" CLASS="is-primary"> Sign Up </button>
-</form>
+<div class="form-container">
+  <form action="/users/signup" method="POST" class="form">
+    <h1 class="login-text">${title}</h1><br/>
+    <div class="field">
+      <div class="control">
+          <input class="input is-primary" name="first_name" type="text" placeholder="First Name">
+        </div>
+    </div>
+    <div class="field">
+      <div class="control">
+          <input class="input is-primary" name="last_name" type="text" placeholder="Last Name">
+        </div>
+    </div>
+    <div class="field">
+      <div class="control">
+          <input class="input is-primary" name="city" type="text" placeholder="City">
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+          <input class="input is-primary" name="about_me" type="text" placeholder="Write Something About Yourself">
+      </div>
+    </div>
+    <div class="field">
+      <div class="control has-icons-left">
+          <input class="input is-primary" name="email" type="email" placeholder="Your Email">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control has-icons-left">
+          <input class="input is-primary" name="password" type="password" placeholder="Password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+      </div>
+    </div>
+    <button type="submit" class="button is-info"> Sign Up </button> <br /><br />
+    <a href="https://slack.com/oauth/authorize?scope=identity.basic&client_id=your_client_id"><img
+        src="https://api.slack.com/img/sign_in_with_slack.png" /></a>
+  </form>
 
-
-<a href="https://slack.com/oauth/authorize?client_id=5213863414.652968572546&scope=identity.basic,identity.email,identity.team"><img src="https://api.slack.com/img/sign_in_with_slack.png" /></a>
+</div>

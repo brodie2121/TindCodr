@@ -66,6 +66,9 @@ exports.user_edit_profile_get = async (req, res) => {
 }
 
 exports.login_page_get = (req, res) => {
+  if (req.session.is_logged_in) {
+    return res.redirect("/myprofile")
+  }
     res.render('template', {
         locals: {
             title: 'Login Page',
@@ -78,6 +81,9 @@ exports.login_page_get = (req, res) => {
 }
 
 exports.sign_up_get = (req, res) => {
+  if (req.session.is_logged_in) {
+    return res.redirect("/myprofile")
+  }
     res.render('template', {
         locals: {
             title: 'Sign Up Page',
@@ -99,7 +105,9 @@ exports.logout_get = (req, res) => {
 // PAGE POSTS //
 ////////////////
 
+
 exports.login_page_post = async (req, res) => {
+    
     const { email, password } = req.body,
         userInstance = new User(null, null, null, email, password, null, null);
         const userData = await userInstance.getUserByEmail();
@@ -113,7 +121,17 @@ exports.login_page_post = async (req, res) => {
             req.session.city = userData.users_city;
             req.session.about_me = userData.users_about_me;
         console.log('CORRECT PW!');
-        res.redirect('/');
+        res.render('template', { 
+          locals: {
+            title: 'TindCodr', 
+            is_logged_in: req.session.is_logged_in
+
+          },
+          partials: {
+            partial: 'partial-index'
+          }
+       });
+
     } else {
         console.log('WRONG PW!');
         res.redirect('/users/signup');
@@ -137,4 +155,3 @@ exports.sign_up_post = (req, res) => {
         res.redirect('/');
     });
 }
-
