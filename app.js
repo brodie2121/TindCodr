@@ -1,5 +1,5 @@
 const express = require('express')
-    session = require('express-session'),
+session = require('express-session'),
     FileStore = require('session-file-store')(session),
     es6Renderer = require('express-es6-template-engine'),
     path = require('path'),

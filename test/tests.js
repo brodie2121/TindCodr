@@ -19,7 +19,7 @@ describe('Users model tests', () => {
         const userInstance = new User(null, null, null, 'matt@bmx.com', null, null);
         const theUser = await userInstance.getUserByEmail();
         console.log('the user is', theUser);
-        expect(theUser.id).to.not.be.an('undefined');    
+        expect(theUser.id).to.not.be.an('undefined');
     });
 
     it('should make sure incorrect passwords are incorrect', async () => {
