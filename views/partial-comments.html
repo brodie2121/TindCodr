@@ -1,65 +1,57 @@
 <div class="project-container">
-  <section class="section">
-      <h1 class="login-text">${projectDetails[0].project_title}</h1>
-      <table class="table">
-          <thead>
-              <tr>
-                  <td> Title </td>
-                  <td> Project Start </td>
-                  <td> Project Summary </td>
-                  <td> Project Url </td>
-                  <td> Project Open</td>
-                  <td> Project User </td>
-              </tr>
-          </thead>
-          <tr>
-              <td>${projectDetails[0].project_title}</td>
-              <td>${projectDetails[0].project_start}</td>
-              <td>${projectDetails[0].project_summary}</td>
-              <td>${projectDetails[0].project_url}</td>
-              <td>${projectDetails[0].project_open}</td>
-              <td>${projectDetails[0].users_first_name}</td>
-          </tr>
-      </table>
-  </section>
-  <section class="section">
-      <table class="table">
-          <thead>
-              <tr>
-                  <td> Comments </td>
-                  <td> User Name </td>
-                  <td> Project Id </td>
-              </tr>
-          </thead>
-          ${projectComment.map(comments =>
-          `<tr>
-              <td>${comments.comments_content}</td>
-              <td>${comments.users_first_name} ${comments.users_last_name}</td>
-              <td>${comments.comments_project_id}</td>
-          </tr>`
-          ).join('')}
-      </table>
-  </section>
-  <section class="section">
-      ${!!is_logged_in ? `
-      <h1>Add a new project comment!</h1>
-      <br>
-      <form action="/projects/update" method="POST">
-          <input type="hidden" name="comments_project_id" value="${projectDetails[0].id}">
-          <input type="hidden" name="comments_users_id" value="${user_id}">
-          <label>Write Your Review Below:
-              <br>
-          </label>
-          <div class="field">
-            <div class="control">
-              <textarea class="textarea is-info has-fixed-size" rows="5" name="comments_content" placeholder="Write Your Review"></textarea>
-                </div>
-          </div>
-          <br>
-          <button type="submit" class='is-info button'>Submit</button>
-      </form>
-      ` : `
-      <P> Login to submit your review </P> `}
-  </section>
+<section class="section">
+    <h1 class="login-text">${projectDetails.project_title}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td> Title </td>
+                    <td> Project Start </td>
+                    <td> Project Summary </td>
+                    <td> Project Url </td>
+                    <td> Project Status</td>
+                    <td> Project Creator</td>
+                </tr>
+            </thead>
+            <tr>
+                <td>${projectDetails.project_title}</td>
+                <td>${projectDetails.project_start}</td>
+                <td>${projectDetails.project_summary}</td>
+                <td>${projectDetails.project_url}</td>
+                <td>${projectDetails.project_open}</td>
+                <td>${projectDetails.users_first_name}</td>
+            </tr>
+        </table>
+    </section>
+<section class="section">
+    <table class="table">
+        <thead>
+            <tr>
+                <td> Comment </td>
+                <td> Posted By </td>
+            </tr>
+        </thead>
+        ${projectComment.map(comments =>
+        `<tr>
+            <td>${comments.comments_content}</td>
+            <td>${comments.users_first_name} ${comments.users_last_name}</td>
+        </tr>`
+        ).join('')}
+    </table>
+</section>
+<section class="section">
+    ${!!is_logged_in ? `
+    <br>
+    <form action="/projects/update" method="POST">
+        <input type="hidden" name="comments_project_id" value="${projectDetails.id}">
+        <input type="hidden" name="comments_users_id" value="${user_id}">
+        <label>Write Your Comments Below:
+            <br>
+        </label>
+            <textarea class="textarea is-info has-fixed-size" rows="5" name="comments_content" placeholder="Write Your comments or questions here"></textarea>
+        <br>
+        <button type="submit" class='is-info button'>Submit</button>
+    </form>
+    ` : `
+    <P> Login to submit your review </P> `}
+</section>
 </div>
-

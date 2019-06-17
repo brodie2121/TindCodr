@@ -13,6 +13,7 @@ const projectsRouter = require('./routes/projects');
 const myProjectsRouter = require('./routes/myprojects');
 const myProfileRouter = require('./routes/myprofile');
 const matchMakerRouter = require('./routes/matchmaker');
+const myMatchesRouter = require('./routes/mymatches');
 
 const app = express();
 
@@ -41,5 +42,6 @@ app.use('/projects', projectsRouter);
 app.use('/myprojects', myProjectsRouter);
 app.use('/myprofile', myProfileRouter);
 app.use('/matchmaker', matchMakerRouter);
+app.use('/mymatches', myMatchesRouter);
 
 module.exports = app;

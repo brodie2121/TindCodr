@@ -5,13 +5,14 @@ create table users (
   users_email varchar(100), 
   users_password varchar(500),
   users_city varchar(100),
+<<<<<<< HEAD
   coding_level varchar(200),
   users_about_me varchar(1000), 
   picture_path varchar(500)
+=======
+  users_about_me varchar(1000)
+>>>>>>> 1bbe5afe71da64f1bd898d9ae475f9ef6db30fdd
 );
-
-ALTER TABLE users
-Add COLUMN users_about_me VARCHAR (1000);
 
 create table projects (
   id serial primary key,
@@ -32,12 +33,13 @@ create table comments (
 
 create table likes (
   id serial primary key,
-  liker_users_id integer references users(id),
-  liked_users_id integer (10)
+  liker_id integer references users(id),
+  liked_id integer references users(id)
 );
 
 create table dislikes (
   id serial primary key,
+<<<<<<< HEAD
   disliker_users_id integer references users(id),
   disliked_users_id integer (10)
 <<<<<<< HEAD
@@ -45,3 +47,9 @@ create table dislikes (
 =======
 ;)
 >>>>>>> ecedb906dc4246d36085ab71fed7989fda97a5ce
+=======
+  liker_id integer references users(id),
+  liked_id integer references users(id)
+);
+
+>>>>>>> jackdmaddox-dev-branch

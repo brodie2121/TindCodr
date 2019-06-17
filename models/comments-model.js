@@ -11,6 +11,7 @@ class Comments {
     static async getById(id) {
         try {
             const response = await db.any(`select * from comments LEFT JOIN users ON comments.comments_users_id=users.id where comments_project_id=${id}`);
+            console.log(response);
             return response;
         } catch (err) {
             return err.message

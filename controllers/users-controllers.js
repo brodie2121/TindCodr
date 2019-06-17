@@ -43,7 +43,7 @@ exports.matchmaker_page_get = async (req, res) => {
             title: 'MatchMaker',
             userInfo: getUserInfo,
             is_logged_in: req.session.is_logged_in,
-            // user_id: req.session.user_id
+            user_id: req.session.user_id
 
         },
         partials: {
@@ -52,15 +52,19 @@ exports.matchmaker_page_get = async (req, res) => {
     });
 }
 
-exports.user_edit_profile_get = async (req, res) => {
+exports.mymatches_page_get = async (req, res) => {
+    const loggedInUserId = req.session.user_id;
+    const allMatches = await Likes.getMatchesById(loggedInUserId);
+    console.log('this is all matches:', allMatches);
     res.render('template', {
         locals: {
-            title: 'Edit Profile Page',
-            userInfo: getUserInfo,
-            is_logged_in: req.session.is_logged_in
+            title: 'Match Details',
+            myListOfMatches: allMatches,
+            is_logged_in: req.session.is_logged_in,
+            user_id: req.session.user_id
         },
         partials: {
-            partial: 'partial-edit-profile'
+            partial: 'partial-mymatches',
         }
     });
 }
@@ -122,17 +126,7 @@ exports.login_page_post = async (req, res) => {
             req.session.city = userData.users_city;
             req.session.about_me = userData.users_about_me;
         console.log('CORRECT PW!');
-        res.render('template', { 
-          locals: {
-            title: 'TindCodr', 
-            is_logged_in: req.session.is_logged_in
-
-          },
-          partials: {
-            partial: 'partial-index'
-          }
-       });
-
+        res.redirect('/projects');
     } else {
         console.log('WRONG PW!');
         res.redirect('/users/signup');
@@ -153,6 +147,28 @@ exports.sign_up_post = (req, res) => {
         req.session.user_id = response.id;
         req.session.city = response.users_city;
         req.session.about_me = response.about_me;
-        res.redirect('/');
+        res.redirect('/users/login');
+    });
+}
+
+exports.matchmaker_liked_post = (req, res) => {
+        const {liked_id, liker_id} = req.body;
+        Likes.likeUser(liked_id, liker_id)
+        .then(async () => {
+            res.redirect('/matchmaker');
+        })
+        .catch((err) => {
+            res.sendStatus(500).send(err.message);
+        });
+}
+
+exports.matchmaker_disliked_post = (req, res) => {
+    const {liked_id, liker_id} = req.body;
+    Likes.dislikeUser(liked_id, liker_id)
+    .then(async () => {
+        res.redirect('/matchmaker');
+    })
+    .catch((err) => {
+        res.sendStatus(500).send(err.message);
     });
 }
