@@ -118,6 +118,7 @@ exports.login_page_post = async (req, res) => {
             req.session.first_name = userData.users_first_name;
             req.session.last_name = userData.users_last_name;
             req.session.user_id = userData.id;
+            req.session.users_email = userData.users_email;
             req.session.city = userData.users_city;
             req.session.about_me = userData.users_about_me;
         console.log('CORRECT PW!');

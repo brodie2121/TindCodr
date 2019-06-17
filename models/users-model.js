@@ -75,11 +75,11 @@ static async getUserById() {
 }
 
     async checkUserProfile() {
-        console.log('users email', this.users_email);
-        console.log("the user ", this);
+        //console.log('users email', this.users_email);
+        //console.log("the user ", this);
         try {
             const userData = await db.one(`select * from users where users_email = $1;`, [this.users_email]);
-            console.log('userData ', userData);
+            //console.log('userData ', userData);
             return userData;
             // const { user_id, first_name, last_name, users_email, team_id } = response;
             // return { user_id, first_name, last_name, users_email, team_id };

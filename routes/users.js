@@ -10,17 +10,17 @@ router.get('/authorize/slack', async function(req, res) {
   //console.log(process.env['CLIENT_ID'])
   request.get(`https://slack.com/api/oauth.access?client_id=${process.env['CLIENT_ID']}&client_secret=${process.env['CLIENT_SECRET']}&code=${req.query.code}`, async(error, response, body) => {
     const data = await JSON.parse(body);
-    console.log('data: ', data) 
+    //console.log('data: ', data) 
     const team_id = data.team.id;
     console.log(team_id) 
 
     if(team_id == process.env['TEAM_ID']) {
-      console.log('if')
+      //console.log('if')
       req.session.email = data.user.email;
       req.session.bearer = data.access_token;
       req.session.is_logged_in = true;
 
-      const user = new User(null, null, null, data.user.email, null, null, null);
+    const user = new User(null, null, null, data.user.email, null, null, null);
     
       userProfileCheck = await user.checkUserProfile();
       console.log('user profile check ', userProfileCheck)
