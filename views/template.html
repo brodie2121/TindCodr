@@ -1,30 +1,92 @@
 <head>
     <meta charset="utf-8">
-    <title>Topic Understandings Day Project | ${title}</title>
+    <title>TindCodr | ${title}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-        <!-- Place favicon.ico in the root directory -->
+    <!-- Place favicon.ico in the root directory -->
 </head>
+
 <body>
-    <nav class="navbar main-nav is-dark" role="navigation" aria-label="main navigation">
-        <div class="navbar-start">
-            <a class="navbar-item" href='/'>Home</a>
-            <a class="navbar-item" href='/projects'>Latest Projects</a>
-        </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         ${!!is_logged_in ? `
+        <div class="navbar-brand">
+                <div id="navbar-logo">
+                <a class="navbar-item" href="https://www.digitalcrafts.com/">
+                    <img src="images/logo.png" width="28" height="28">
+                </a>
+                </div>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+        </div>
+        <div id="navbarBasicExample" div class="navbar-menu">
+            <div class="navbar-start">
+            <a class="navbar-item" href='/'>Home</a>
+            <a class="navbar-item" href="/projects">Latest Projects</a> 
+            <a class="navbar-item" href="/myprojects">My Projects</a>
+            <a class="navbar-item" href='/myprofile'>My Profile</a>
+            <a class="navbar-item" href='/matchmaker'>Match Maker</a>
+            <a class="navbar-item" href='/mymatches'>My Matches</a>
+            </div>
             <div class ="navbar-end">
                 <a class="navbar-item" href="/users/logout"> Logout </a> 
             </div>
+        </div>
             ` : `
-            <div class ="navbar-end">
-                <a class="navbar-item" href="/users/login"> Login </a> 
-                <a class="navbar-item" href="/users/signup"> Signup</a>
+            <div class="navbar-brand">
+                    <a class="navbar-item" href="https://www.digitalcrafts.com/">
+                        <img src="images/logo.png" width="28" height="28">
+                    </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" div class="navbar-menu">
+                <div class="navbar-start">
+                        <a class="navbar-item" href='/'>Home</a>
+                        <a class="navbar-item" href="/users/login"> Login </a> 
+                        <a class="navbar-item" href="/users/signup"> Signup</a>
+                </div>
             </div>
             `}
     </nav>
-    <h1>${title}</h1>
-    <main class="container">${partial}</main>
+    <main>
+        ${partial}
+    </main>
 </body>
 </html>
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+    
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+    
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+    
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+    
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+    
+          });
+        });
+      }
+    
+    });
+</script>

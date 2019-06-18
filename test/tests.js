@@ -19,13 +19,13 @@ describe('Users model tests', () => {
         const userInstance = new User(null, null, null, 'matt@bmx.com', null, null);
         const theUser = await userInstance.getUserByEmail();
         console.log('the user is', theUser);
-        expect(theUser.id).to.not.be.an('undefined');    
+        expect(theUser.id).to.not.be.an('undefined');
     });
 
     it('should make sure incorrect passwords are incorrect', async () => {
         const users_password = 'wrongpassword';
         const users_email = 'matt@bmx.com';
-        const userInstance = new User(null, null, null, users_email, users_password, null);
+        const userInstance = new User(null, null, null, users_email, users_password, null, null);
         const userData = await userInstance.getUserByEmail();
         console.log(userData);
         const isValid = bcrypt.compareSync(users_password, userData.users_password);

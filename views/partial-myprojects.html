@@ -1,0 +1,37 @@
+<div class="project-container">
+<section class="section">
+    <p class='hero-text'>Your Projects</p>
+    <br>
+    <div class="table-container">
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth table-container">
+        <thead>
+            <tr>
+                <td> Title </td>
+                <td> Project Start </td>
+                <td> Project Summary </td>
+                <td> Project Url </td>
+                <td> Project Open</td>
+            </tr>
+        </thead>
+    ${myListOfProjects.map(projects => 
+        `<tr>
+            <td><a href="/projects/${projects.id}">${projects.project_title}</a></td>
+            <td>${projects.project_start}</td>
+            <td>${projects.project_summary}</td>
+            <td>${projects.project_url}</td>
+            <td>${projects.project_open}</td>
+        </tr>`
+    ).join('')}
+    </table>
+    </div>
+</section>
+<section class="section">
+    ${!!is_logged_in ? `<a href="/projects/new"> Add New Project
+    </a>
+    ` : `
+    <a href="/users/login">
+      <p> Login to add a new project listing!</p>
+    </a> `}
+
+</section>
+</div>

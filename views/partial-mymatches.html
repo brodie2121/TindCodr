@@ -1,0 +1,28 @@
+<div class="project-container">
+<section class="section">
+    <p class='hero-text'>Your Matches</p>
+    <br>
+    <div class="table-container">
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td> First Name </td>
+                <td> Last Name </td>
+                <td> Email Address </td>
+                <td> City </td>
+            </tr>
+        </thead>
+    ${myListOfMatches.map(users => 
+        `<tr>
+            <td>${users.users_first_name}</td>
+            <td>${users.users_last_name}</td>
+            <td>${users.users_email}</td>
+            <td>${users.users_city}</td>
+
+        </tr>`
+    ).join('')}
+    </table>
+</div>
+</section>
+</div>

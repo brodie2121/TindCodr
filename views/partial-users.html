@@ -7,12 +7,12 @@
                 <td> Email </td>
             </tr>
         </thead>
-    ${usersList.map(users => 
+        ${usersList.map(users =>
         `<tr>
             <td>${users.first_name}</td>
             <td>${users.last_name}</td>
             <td>${users.email}</td>
         </tr>`
-    ).join('')}
+        ).join('')}
     </table>
 </section>
