@@ -75,7 +75,7 @@ VALUES
 insert into projects
     (project_title, project_start, project_summary, project_url, project_open, project_users_id)
 VALUES
-    ('nutterbutters', 'today', 'an app that tells you where nuttersbutters are sold', 'ilynb.com', 'open', 5)
+    ('nutterbutters', 'today', 'an app that tells you where nuttersbutters are sold', 'ilynb.com', 'open', 5);
 
 insert into comments
     (comments_content, comments_users_id, comments_project_id)

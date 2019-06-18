@@ -18,14 +18,22 @@
             <p>${userInfo.id}</p>
         </tr>
     </table>
-    <form action="/matchmaker/dislike" method="POST">
+    
+    <table border="0">
+    <tr>
+
+    <td><form action="/matchmaker/dislike" method="POST">
         <input type="hidden" name="liked_id" value="${userInfo.id}">
         <input type="hidden" name="liker_id" value="${user_id}">
         <button type="submit" class='is-primary'>Next Profile</button>    
-    </form>
-    <form action="/matchmaker" method="POST">
+    </form></td>
+
+    <td><form action="/matchmaker" method="POST">
         <input type="hidden" name="liked_id" value="${userInfo.id}">
         <input type="hidden" name="liker_id" value="${user_id}">
         <button type="submit" class='is-primary'>Suggest a coffee!</button>
-    </form>
+    </form></td>
+    
+    </tr>
+    </table>
 </section>
