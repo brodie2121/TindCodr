@@ -88,12 +88,6 @@ exports.addProject_post = async (req, res) => {
                 is_logged_in: req.session.is_logged_in,
                 user_id: req.session.user_id
 
-            res.status(200).render('template', {
-                locals: {
-                    title: 'Projects Updated',
-                    projectsList: allProjects,
-                    is_logged_in: req.session.is_logged_in,
-
                 },
                 partials: {
                     partial: 'partial-projects',

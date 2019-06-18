@@ -10,7 +10,7 @@ router.get('/authorize/slack', async function(req, res) {
   //console.log(process.env['CLIENT_ID'])
   request.get(`https://slack.com/api/oauth.access?client_id=${process.env['CLIENT_ID']}&client_secret=${process.env['CLIENT_SECRET']}&code=${req.query.code}`, async(error, response, body) => {
     const data = await JSON.parse(body);
-    //console.log('data: ', data) 
+    console.log('data: ', data) 
     const team_id = data.team.id;
     console.log(team_id) 
 
@@ -32,7 +32,6 @@ router.get('/authorize/slack', async function(req, res) {
     }
   })
 });
-
 
 router.get('/login', UsersControllers.login_page_get);
 

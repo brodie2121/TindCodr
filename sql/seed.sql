@@ -52,6 +52,30 @@ insert into projects
     (project_title, project_start, project_summary, project_url, project_open, project_users_id)
 VALUES
     ('tindcodr', 'friday', 'group project 2 to take over the world!', 'bigurl here', 'Open', 1);
+insert into projects
+    (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+VALUES
+    ('showhunter', 'July', 'app that tells you when your favorite band is playing as well as related bands', 'showhunter.com', 'Open', 2);
+insert into projects
+    (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+VALUES
+    ('call of duty', 'November', 'the best video game ever to be sold', 'cod.com', 'open', 3);
+insert into projects
+    (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+VALUES
+    ('slack2.0', 'June', 'this is going destroy slack as we know it', 'slack2.0.com', 'open', 4);
+insert into projects
+    (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+VALUES
+    ('crazy game', 'October', 'this game is crazy, you will not survive', 'crazygame.com', 'open', 5);
+insert into projects
+    (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+VALUES
+    ('facebook2.0', 'soon', 'this version of facebook will not hack your personal records', 'facebook2.0.com', 'open', 6 );
+insert into projects
+    (project_title, project_start, project_summary, project_url, project_open, project_users_id)
+VALUES
+    ('nutterbutters', 'today', 'an app that tells you where nuttersbutters are sold', 'ilynb.com', 'open', 5)
 
 insert into comments
     (comments_content, comments_users_id, comments_project_id)
